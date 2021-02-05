@@ -118,12 +118,12 @@ void setTime(){
   if(date < 10){
     displayp.print("0");  
   }
-  displayp.print(date + ":");
+  displayp.print(date + "/");
   
   if(month < 10){
     displayp.print("0");
   }
-  displayp.print(month + ":" + *year);
+  displayp.print(month + "/" + *year);
   displayp.display();
   displayp.clearDisplay();
 
