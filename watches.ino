@@ -207,8 +207,12 @@ void setTime(){
       delay(200);
     }
     
-    if(digitalRead(6) == HIGH){
+    if(digitalRead(6) == HIGH && pointer_tahun == 4){
+      pointer_tahun = 0;
       done++;
+      delay(200);
+    } else if(digitalRead(6) == HIGH && pointer_tahun != 4){
+      pointer_tahun++;
       delay(200);
     }
     
