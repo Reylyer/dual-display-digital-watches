@@ -167,7 +167,7 @@ void setTime(){
     }
     
     // tanggal
-  } if(done == 2){
+  } if(done == 4){
     if(digitalRead(8) == HIGH){
       date++;
       delay(200);
@@ -192,12 +192,13 @@ void setTime(){
     }
 
     if(digitalRead(6) == HIGH){
+      end_of_the_month = get_end_of_the_month(month, year);
       done++;
       delay(200);
     }
 
     // tahun
-  } if(done == 4){
+  } if(done == 2){
     if(digitalRead(8) == HIGH){
       year[pointer_tahun] = (year[pointer_tahun] + 1)%10;
       delay(200);
@@ -207,12 +208,18 @@ void setTime(){
     }
     
     if(digitalRead(6) == HIGH){
-      end_of_the_month = get_end_of_the_month(month, year);
       done++;
       delay(200);
     }
     
   }
+
+  minute %= 60;
+  hour %= 24;
+  date %= end_of_the_month;
+  month = (month % 13 == 0) ? 1 : month % 13;
+
+
 }
 
 int get_end_of_the_month(int month, short int *year){
